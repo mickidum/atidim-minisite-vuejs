@@ -1,5 +1,13 @@
 <template>
-  <div class="about">
-    <h1>This is an Service page</h1>
-  </div>
+	<div class="home">
+		<div class="home-banner">
+			<img src="@/assets/banner1.jpg" alt="home" />
+		</div>
+	</div>
 </template>
+
+<script>
+export default {
+	name: "service"
+};
+</script>
