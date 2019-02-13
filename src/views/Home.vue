@@ -4,7 +4,7 @@
 			<img src="../assets/home-banner.jpg" alt="home" />
 		</div>
 		<div class="filter">
-			<div class="container">
+			<div class="container header-container">
 				<h1 class="text-green my-3 header-border">משרדים להשכרה</h1>
 			</div>
 			<img src="../assets/home2.jpg" alt="home2" />
