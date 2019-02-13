@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="main-menu">
-      <MainMenu />
+      <MainMenu im="logo.png" />
     </div>
     <router-view />
     <div class="short-form bottom-form">
@@ -11,18 +11,20 @@
       </div>
     </div>
     <div class="main-menu footer">
-      <MainMenu />
+      <FooterMenu />
     </div>
   </div>
 </template>
 
 <script>
 import MainMenu from "@/components/MainMenu";
+import FooterMenu from "@/components/FooterMenu";
 import ShortForm from "@/components/ShortForm";
 export default {
   components: {
     MainMenu,
-    ShortForm
+    ShortForm,
+    FooterMenu
   }
 };
 </script>
