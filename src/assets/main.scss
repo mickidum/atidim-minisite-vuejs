@@ -133,6 +133,7 @@ img {
 .asakim {
 	position: relative;
 	padding: 40px 0;
+	border-top: solid 10px #c5cb33;
 }
 
 .bottom-form {
@@ -151,5 +152,27 @@ img {
 	}
 	input {
 		background-color: gray;
+	}
+}
+
+.footer {
+	position: relative;
+	border-top: solid 10px #fff;
+	background-color: #44ac33;
+	padding: 50px 0;
+	nav {
+		.nav-i,
+		.nav-i button {
+			color: #fff;
+			&:hover {
+				color: #000;
+			}
+		}
+	}
+	.router-link-active.router-link-exact-active:not(.logo) {
+		color: #000;
+		&::after {
+			background-color: #000;
+		}
 	}
 }

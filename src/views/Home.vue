@@ -44,7 +44,7 @@
 						</h4>
 					</b-col>
 
-					<div class="w-100"></div>
+					<!-- <div class="w-100"></div> -->
 
 					<b-col md="4">
 						<img
@@ -73,12 +73,6 @@
 						</h4>
 					</b-col>
 				</b-row>
-			</div>
-		</div>
-		<div class="short-form bottom-form">
-			<div class="container">
-				<h2>צרו קשר 8485* <span> / </span> 050-4455074</h2>
-				<ShortForm />
 			</div>
 		</div>
 	</div>
