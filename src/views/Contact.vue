@@ -3,8 +3,8 @@
 		<div class="service-banner">
 			<img src="@/assets/banner1.jpg" alt="service" />
 		</div>
-		<div class="container mt-3">
-			<h1 class="text-green my-3 header-border">צרו קשר</h1>
+		<div class="container">
+			<h1 class="text-green my-4 header-border">צרו קשר</h1>
 		</div>
 		<div class="contacts-block short-form big-form">
 			<div class="container">
