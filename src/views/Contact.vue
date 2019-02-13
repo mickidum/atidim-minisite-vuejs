@@ -3,11 +3,33 @@
 		<div class="service-banner">
 			<img src="@/assets/banner1.jpg" alt="service" />
 		</div>
-		<div class="header-container container">
+		<div class="container mt-3">
 			<h1 class="text-green my-3 header-border">צרו קשר</h1>
 		</div>
-		<div class="contacts-block short-form">
-			<BigForm />
+		<div class="contacts-block short-form big-form">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="contact-text">
+							<div class="b-1">
+								<h3>אורטל גולדברגר, <br />מנהלת מכירות</h3>
+								<a href="tel:03-7690849">טל': 03-7690849</a><br />
+								<a href="tel:050-4455074">נייד: 050-4455074</a><br />
+								<a href="mailto:ortalg@atidim.co.il">ortalg@atidim.co.il</a>
+							</div>
+							<div class="b-1">
+								<h3>משרדי הנהלת עתידים</h3>
+								<span>בכל שעות היממה 8485*</span><br />
+								<a href="tel:03-7690800">טל': 03-7690800</a><br />
+								<a href="tel:03-6481253">פקס: 03-6481253</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<BigForm />
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>

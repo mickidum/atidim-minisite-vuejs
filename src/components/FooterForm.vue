@@ -4,16 +4,16 @@
 			<div class="container">
 				<div class="form-row">
 					<div class="col-md-3 mb-2">
-						<label class="sr-only" for="short-form-name">שם מלא</label>
-						<b-input class="" id="short-form-name" placeholder="שם מלא:" />
+						<label class="sr-only" for="footer-form-name">שם מלא</label>
+						<b-input class="" id="footer-form-name" placeholder="שם מלא:" />
 					</div>
 					<div class="col-md-3 mb-2">
-						<label class="sr-only" for="short-form-mail">דואל</label>
-						<b-input class="" id="short-form-mail" placeholder="דואל:" />
+						<label class="sr-only" for="footer-form-mail">דואל</label>
+						<b-input class="" id="footer-form-mail" placeholder="דואל:" />
 					</div>
 					<div class="col-md-3 mb-2">
-						<label class="sr-only" for="short-form-phone">טלפון</label>
-						<b-input class="" id="short-form-phone" placeholder="טלפון:" />
+						<label class="sr-only" for="footer-form-phone">טלפון</label>
+						<b-input class="" id="footer-form-phone" placeholder="טלפון:" />
 					</div>
 					<div class="col-md-3 mb-2">
 						<b-button class="btn-block" variant="success">שליחה</b-button>

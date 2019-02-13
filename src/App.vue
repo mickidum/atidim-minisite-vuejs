@@ -12,7 +12,7 @@
           <span>צרו קשר 8485*</span> <span class="hfm"> / </span>
           <span>050-4455074</span>
         </h2>
-        <ShortForm />
+        <FooterForm />
       </div>
     </div>
     <div class="main-menu footer">
@@ -24,11 +24,11 @@
 <script>
 import MainMenu from "@/components/MainMenu";
 import FooterMenu from "@/components/FooterMenu";
-import ShortForm from "@/components/ShortForm";
+import FooterForm from "@/components/FooterForm";
 export default {
   components: {
     MainMenu,
-    ShortForm,
+    FooterForm,
     FooterMenu
   }
 };
