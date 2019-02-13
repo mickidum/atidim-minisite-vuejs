@@ -62,7 +62,7 @@
 
 			.dropdown-menu {
 				a {
-					font-size: 16px;
+					font-size: 20px;
 
 					font-weight: normal;
 					color: #44ac33;
@@ -99,6 +99,30 @@
 		padding: 40px 0 0;
 	}
 	.footer {
-		padding: 50px 0;
+		padding: 20px 0 0;
+		a,
+		button {
+			font-size: 26px;
+		}
+		nav {
+			flex-direction: column;
+			.nav-i {
+				&:first-child {
+					max-width: 250px;
+					text-align: center;
+					margin-bottom: 10px;
+					margin-top: 20px;
+					order: 2;
+				}
+				&:not(:first-child) {
+					margin: 3px;
+					box-shadow: none;
+					padding: 0 5px;
+				}
+			}
+			.dropdown-menu.show {
+				transform: translate3d(-1px, 40px, 0px) !important;
+			}
+		}
 	}
 }

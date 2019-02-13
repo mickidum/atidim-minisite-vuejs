@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="main-menu">
-      <MainMenu></MainMenu>
+      <MainMenu />
     </div>
     <router-view />
     <div class="short-form bottom-form">
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="main-menu footer">
-      <MainMenu></MainMenu>
+      <MainMenu />
     </div>
   </div>
 </template>

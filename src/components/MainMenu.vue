@@ -23,5 +23,7 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["offset"]
+};
 </script>
