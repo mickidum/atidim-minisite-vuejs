@@ -21,6 +21,14 @@ body {
 	opacity: 0;
 }
 
+.bg-green {
+	background-color: #006634;
+}
+
+.bg-green-light {
+	background-color: #44ac33;
+}
+
 .text-green {
 	color: #006634;
 }
@@ -202,5 +210,13 @@ img {
 	font-size: 24px;
 	font-weight: 500;
 	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-bottom: 20px;
+}
+
+.s-text {
+	position: relative;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

@@ -22,6 +22,49 @@
 				להעניק מטריית שירותים נוחה וכוללת.
 			</p>
 		</div>
+		<div class="service-1">
+			<div class="container">
+				<div class="row mb-4">
+					<div class="col-md-6 order-1 order-md-0">
+						<img src="@/assets/service/s-1.jpg" alt="טכנולוגיות מתקדמות" />
+					</div>
+					<div class="col-md-6 order-0 order-md-1">
+						<div class="py-2 s-text text-center bg-green text-white">
+							<h3>
+								במתחם קרית עתידים<br />
+								תהנו מתשתיות <br />
+								טכנולוגיות מתקדמות
+							</h3>
+						</div>
+					</div>
+				</div>
+				<div class="row mb-4">
+					<div class="col-md-6">
+						<div class="py-2 s-text text-center bg-green-light text-white">
+							<h3>
+								מענה לכל השירותים<br />
+								הדרושים
+							</h3>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<img src="@/assets/service/s-1.jpg" alt="טכנולוגיות מתקדמות" />
+					</div>
+				</div>
+				<div class="row mb-4">
+					<div class="col-md-6 order-1 order-md-0">
+						<img src="@/assets/service/s-1.jpg" alt="טכנולוגיות מתקדמות" />
+					</div>
+					<div class="col-md-6 order-0 order-md-1">
+						<div class="py-2 s-text text-center bg-green text-white">
+							<h3>
+								מגוו מסעדות ובתי קפה
+							</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 

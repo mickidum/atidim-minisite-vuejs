@@ -36,6 +36,11 @@
 }
 
 @media (max-width: 575.98px) {
+	img.fit {
+		min-height: 220px;
+		object-fit: cover;
+		object-position: center;
+	}
 	h1 {
 		font-size: 2rem;
 		line-height: 1;
@@ -44,22 +49,35 @@
 		.container {
 			padding: 0;
 		}
-		a,
-		button {
+		a {
 			font-size: 18px;
+			padding: 7px 5px;
+			line-height: 1;
+			vertical-align: middle;
+		}
+		button {
+			padding: 6px 5px;
+			font-size: 18px;
+			line-height: 1;
+			vertical-align: middle;
 		}
 		nav {
 			margin-bottom: 5px;
+			display: block;
+			margin: auto;
+			text-align: center;
 			.nav-i {
 				&:first-child {
-					max-width: 200px;
+					margin: auto;
+					width: 100%;
 					text-align: center;
 					margin-bottom: 25px;
+					display: block;
 				}
 				&:not(:first-child) {
+					display: inline-block;
 					margin: 0 4px;
 					box-shadow: 0 0 5px silver;
-					padding: 0 5px;
 				}
 			}
 
@@ -87,8 +105,11 @@
 		position: relative;
 		background-color: gray;
 		padding: 40px 0;
-		span {
+		.hfm {
 			display: none;
+		}
+		span {
+			display: block;
 		}
 		h2 {
 			text-align: center;
@@ -102,22 +123,25 @@
 		padding: 40px 0 0;
 	}
 	.footer {
-		padding: 20px 0 0;
+		padding: 20px 0;
 		a,
 		button {
-			font-size: 26px;
+			font-size: 18px !important;
 		}
 		nav {
-			flex-direction: column;
+			// flex-direction: column;
 			.nav-i {
+				display: inline-block;
+				vertical-align: middle;
 				&:first-child {
 					max-width: 250px;
 					text-align: center;
 					margin-bottom: 10px;
-					margin-top: 20px;
+					// margin-top: 20px;
 					order: 2;
 				}
 				&:not(:first-child) {
+					display: none;
 					margin: 3px;
 					box-shadow: none;
 					padding: 0 5px;
@@ -132,6 +156,14 @@
 		font-size: 20px;
 		font-weight: normal;
 		padding-top: 20px;
-		padding-bottom: 20px;
+		padding-bottom: 0;
+	}
+
+	.s-text {
+		position: relative;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 }

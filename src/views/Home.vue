@@ -1,13 +1,13 @@
 <template>
 	<div class="home">
 		<div class="home-banner">
-			<img src="../assets/home-banner.jpg" alt="home" />
+			<img class="fit" src="@/assets/home-banner.jpg" alt="home" />
 		</div>
 		<div class="filter">
 			<div class="container header-container">
 				<h1 class="text-green my-3 header-border">משרדים להשכרה</h1>
 			</div>
-			<img src="../assets/home2.jpg" alt="home2" />
+			<img class="fit" src="@/assets/home2.jpg" alt="home2" />
 		</div>
 		<div class="short-form">
 			<div class="container">
@@ -22,7 +22,7 @@
 				</h2>
 				<b-row>
 					<b-col md="4">
-						<img class="w-100" src="../assets/asakim/a-1.jpg" alt="גאדג׳טים" />
+						<img class="w-100" src="@/assets/asakim/a-1.jpg" alt="גאדג׳טים" />
 						<h4 class="text-center bg-dark text-white py-1 mt-1 mb-3">
 							גאדג׳טים
 						</h4>
@@ -30,7 +30,7 @@
 					<b-col md="4">
 						<img
 							class="w-100"
-							src="../assets/asakim/a-2.jpg"
+							src="@/assets/asakim/a-2.jpg"
 							alt="מעבדת סלולר"
 						/>
 						<h4 class="text-center bg-dark text-white py-1 mt-1 mb-3">
@@ -38,7 +38,7 @@
 						</h4>
 					</b-col>
 					<b-col md="4">
-						<img class="w-100" src="../assets/asakim/a-3.jpg" alt="סניף בנק" />
+						<img class="w-100" src="@/assets/asakim/a-3.jpg" alt="סניף בנק" />
 						<h4 class="text-center bg-dark text-white py-1 mt-1 mb-3">
 							סניף בנק
 						</h4>
@@ -49,7 +49,7 @@
 					<b-col md="4">
 						<img
 							class="w-100"
-							src="../assets/asakim/a-4.jpg"
+							src="@/assets/asakim/a-4.jpg"
 							alt="אופניים חשמליים"
 						/>
 						<h4 class="text-center bg-dark text-white py-1 mt-1 mb-3">
@@ -57,17 +57,13 @@
 						</h4>
 					</b-col>
 					<b-col md="4">
-						<img
-							class="w-100"
-							src="../assets/asakim/a-5.jpg"
-							alt="ציוד משרדי"
-						/>
+						<img class="w-100" src="@/assets/asakim/a-5.jpg" alt="ציוד משרדי" />
 						<h4 class="text-center bg-dark text-white py-1 mt-1 mb-3">
 							ציוד משרדי
 						</h4>
 					</b-col>
 					<b-col md="4">
-						<img class="w-100" src="../assets/asakim/a-6.jpg" alt="ניקוי יבש" />
+						<img class="w-100" src="@/assets/asakim/a-6.jpg" alt="ניקוי יבש" />
 						<h4 class="text-center bg-dark text-white py-1 mt-1 mb-3">
 							ניקוי יבש
 						</h4>
