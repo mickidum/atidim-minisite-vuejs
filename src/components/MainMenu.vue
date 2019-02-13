@@ -2,7 +2,7 @@
   <div class="container">
     <nav>
       <router-link class="nav-i logo" to="/">
-        <img src="../assets/logo.png" alt="logo" />
+        <img src="@/assets/logo1.png" alt="logo" />
       </router-link>
       <b-dropdown
         class="nav-i"
