@@ -3,7 +3,7 @@
 		<div class="header-container container">
 			<h1 class="text-green my-3 header-border">שירותי פארק</h1>
 		</div>
-		<div class="service-banner">
+		<div class="service-banner text-center">
 			<img src="@/assets/banner1.jpg" alt="home" />
 		</div>
 		<div class="service-text container">

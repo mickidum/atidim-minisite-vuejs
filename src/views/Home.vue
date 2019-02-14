@@ -1,13 +1,15 @@
 <template>
 	<div class="home">
-		<div class="home-banner">
+		<div class="home-banner text-center">
 			<img class="fit" src="@/assets/home-banner.jpg" alt="home" />
 		</div>
 		<div class="filter">
 			<div class="container header-container">
 				<h1 class="text-green my-3 header-border">משרדים להשכרה</h1>
 			</div>
-			<img class="fit" src="@/assets/home2.jpg" alt="home2" />
+			<div class="text-center">
+				<img class="fit" src="@/assets/home2.jpg" alt="home2" />
+			</div>
 		</div>
 		<div class="short-form">
 			<div class="container">

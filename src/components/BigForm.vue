@@ -26,6 +26,19 @@
 				<div class="col-12 mb-2">
 					<b-button class="btn-block" variant="success">שליחה</b-button>
 				</div>
+				<div class="col-12">
+					<div class="ch-b">
+						<b-form-checkbox
+							button-variant="dark"
+							checked="true"
+							class="ch-b-1"
+						/>
+						הרינו להודיעך כי צורפת לרשימת תפוצה של נמענים לעדכונים הכוללים, בין
+						היתר, הצעות שיווקיות ודברי פרסומת ביחס לפארק עתידים. אם אינך מעוניי
+						לקבל עדכונים אלה, באפשרותך להסיר עצמך מרשימת התפוצה, בכל עת, באמצעות
+						לחיצה כא.
+					</div>
+				</div>
 			</div>
 		</b-form>
 	</div>

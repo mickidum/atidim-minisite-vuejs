@@ -1,6 +1,6 @@
 <template>
 	<div class="contact">
-		<div class="service-banner">
+		<div class="service-banner text-center">
 			<img src="@/assets/banner1.jpg" alt="service" />
 		</div>
 		<div class="container">
@@ -19,7 +19,7 @@
 							</div>
 							<div class="b-1">
 								<h3>משרדי הנהלת עתידים</h3>
-								<span>בכל שעות היממה 8485*</span><br />
+								<span class="s-t">בכל שעות היממה 8485*</span><br />
 								<a href="tel:03-7690800">טל': 03-7690800</a><br />
 								<a href="tel:03-6481253">פקס: 03-6481253</a>
 							</div>

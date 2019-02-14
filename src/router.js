@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
 import NotFound from "./views/NotFound.vue";
 
 Vue.use(Router);
@@ -12,7 +11,8 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: Home
+      component: () =>
+        import(/* webpackChunkName: "service" */ "./views/Home.vue")
     },
     {
       path: "/service",
@@ -28,6 +28,12 @@ export default new Router({
       name: "contact",
       component: () =>
         import(/* webpackChunkName: "contact" */ "./views/Contact.vue")
+    },
+    {
+      path: "/building/:id",
+      name: "building",
+      component: () =>
+        import(/* webpackChunkName: "building" */ "./views/Building.vue")
     },
     {
       path: "*",

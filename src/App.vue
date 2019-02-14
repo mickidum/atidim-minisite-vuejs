@@ -4,7 +4,7 @@
       <MainMenu im="logo.png" />
     </div>
     <transition name="fade" mode="out-in">
-      <router-view />
+      <router-view :key="$route.params.id" />
     </transition>
     <div class="short-form bottom-form">
       <div class="container">

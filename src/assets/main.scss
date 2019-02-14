@@ -33,6 +33,10 @@ body {
 	color: #006634;
 }
 
+.text-green-light {
+	color: #44ac33;
+}
+
 .header-container {
 	position: relative;
 	max-width: 820px;
@@ -237,9 +241,19 @@ img {
 		margin-bottom: 20px;
 	}
 	a,
-	span {
+	.s-t {
 		color: #000;
 		font-size: 26px;
 		display: inline-block;
+	}
+	.ch-b-1 {
+		position: absolute;
+		right: -25px;
+		top: 0;
+	}
+
+	.ch-b {
+		display: inline-block;
+		padding-right: 30px;
 	}
 }
