@@ -257,3 +257,44 @@ img {
 		padding-right: 30px;
 	}
 }
+
+.building-page {
+	position: relative;
+	.building-text {
+		padding: 60px 0 40px;
+		position: relative;
+		.b-text {
+			display: flex;
+			font-size: 26px;
+			line-height: 1.2;
+			font-weight: 500;
+			align-items: flex-start;
+			z-index: 3;
+			.rig {
+				white-space: nowrap;
+			}
+		}
+		.b-number {
+			user-select: none;
+			font-size: 260px;
+			text-align: center;
+			line-height: 0;
+			font-weight: bold;
+			display: flex;
+			align-items: baseline;
+			padding: 120px 32px 0;
+			position: absolute;
+			background: white;
+			// z-index: 2;
+			top: -220px;
+			right: 0;
+			img {
+				max-width: 120px;
+			}
+			span {
+				display: inline-block;
+				letter-spacing: -10px;
+			}
+		}
+	}
+}
