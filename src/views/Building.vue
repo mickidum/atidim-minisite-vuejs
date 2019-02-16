@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loaded" class="building-page">
+  <div v-if="loaded" class="building-page" id="b-top">
     <div class="header-container container">
       <h1 class="text-green my-3 header-border">{{ build.title }}</h1>
     </div>
@@ -70,7 +70,9 @@
                       class="text-nowrap"
                     >{{floorToString(office.floor)}}</span>
                   </h6>
-                  <img src="@/assets/b-test/video.jpg" alt="video">
+                  <div @click="foo(office)" v-b-modal.modal1 class="video-image">
+                    <img src="@/assets/b-test/video.jpg" alt="video">
+                  </div>
                 </div>
               </div>
               <div class="col-7 px-1">
@@ -81,6 +83,24 @@
         </div>
       </div>
     </div>
+    <div class="all-modal">
+      <!-- Modal Component -->
+      <b-modal
+        @hide="onModalClose"
+        id="modal1"
+        title-tag="h6"
+        :title="videoTitle"
+        size="xl"
+        body-class="body-off"
+        hide-footer
+        header-class="head-off"
+        centered
+      >
+        <div>
+          <b-embed type="iframe" aspect="16by9" :src="videoPath" allowfullscreen/>
+        </div>
+      </b-modal>
+    </div>
   </div>
 </template>
 
@@ -90,7 +110,10 @@ export default {
   name: "building",
 
   data() {
-    return {};
+    return {
+      videoPath: null,
+      videoTitle: "demo"
+    };
   },
   computed: {
     build() {
@@ -101,10 +124,26 @@ export default {
     },
     ...mapGetters({ site: "getAll", building: "building", loaded: "loaded" })
   },
-  mounted() {
-    console.log(this.build);
-  },
+  // mounted() {
+  //   console.log(this.build);
+  // },
   methods: {
+    // onModalOpen() {
+    //   console.log("open", this);
+    // },
+    onModalClose() {
+      this.videoPath = null;
+    },
+    foo(office) {
+      console.log("foo", office);
+      this.videoTitle = `${office.title_label} ${
+        office.square
+      } מ''ר, ${this.floorToString(office.floor)}`;
+      this.videoPath = office.video_url.replace(
+        "https://youtu.be/",
+        "https://youtube.com/embed/"
+      );
+    },
     floorToString(floor) {
       if (floor == 0) {
         return "קומת קרקע";
@@ -120,9 +159,3 @@ export default {
   }
 };
 </script>
-
-<style lang="css" scoped>
-h1 {
-  transition: all 1s;
-}
-</style>

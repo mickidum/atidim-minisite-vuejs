@@ -352,8 +352,12 @@ img {
 
 
 
-			img {
-				// max-width: 80%;
+			.video-image {
+				cursor: pointer;
+
+				&:hover {
+					opacity: 0.8;
+				}
 			}
 		}
 	}
@@ -373,5 +377,28 @@ img {
 		font-weight: 500;
 		line-height: 1;
 		font-size: 22px;
+	}
+}
+
+.all-modal {
+	position: relative;
+
+	#modal1,
+	.body-off {
+		padding: 0 !important;
+	}
+
+	.head-off {
+		padding: 3px 10px;
+		border: none;
+
+		h6 {
+			font-size: 18px;
+			line-height: 1.6;
+		}
+
+		.close {
+			margin: -1rem auto -1rem -1rem;
+		}
 	}
 }
