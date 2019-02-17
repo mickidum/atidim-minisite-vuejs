@@ -48,22 +48,67 @@
         </div>
       </div>
     </b-form>
-    {{ officeType }}
+    <div class="search-results offices-list">
+      <div class="container" style="max-width: 820px;">
+        <div v-if="filteredOffices" class="row">
+          <Office
+            :key="office.id"
+            v-for="office in filteredOffices"
+            :class="['mb-3', 'col-md-12 fz-20']"
+            :office="office"
+            @openModal="foo(office)"
+          />
+        </div>
+        <div v-if="noResults" class="no-res text-center">
+          <h4>לא נמצא נכס המתאים...</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="all-modal">
+      <!-- Modal Component -->
+      <b-modal
+        @hide="onModalClose"
+        id="modal2"
+        title-tag="h6"
+        :title="videoTitle"
+        size="xl"
+        body-class="body-off"
+        hide-footer
+        header-class="head-off"
+        centered
+      >
+        <div>
+          <b-embed
+            type="iframe"
+            aspect="16by9"
+            :src="videoPath"
+            allowfullscreen
+          />
+        </div>
+      </b-modal>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import RangeSlider from "vue-range-slider";
+import Office from "@/components/Office";
 export default {
   components: {
-    RangeSlider
+    RangeSlider,
+    Office
   },
   data() {
     return {
+      videoPath: null,
+      videoTitle: "demo",
       officeType: null,
       floor: null,
       square: 0,
+      noResults: false,
+      filteredOffices: [],
       officeTypeOptions: [
         { value: null, text: "סוג נכס" },
         { value: "משרד", text: "משרד" },
@@ -75,8 +120,7 @@ export default {
         { value: "1", text: "1" },
         { value: "2", text: "2" },
         { value: "3", text: "3" }
-      ],
-      filteredOffices: null
+      ]
     };
   },
   computed: {
@@ -130,32 +174,56 @@ export default {
           );
         }
 
-        // sdsdsdsds
         if (
           office.compatible_for === this.officeType &&
           office.square <= this.square &&
-          !office.floor
+          !this.floor
         ) {
           return (
             office.compatible_for === this.officeType &&
             office.square <= this.square
           );
         }
-
         // by floor
         if (
           office.floor === this.floor &&
           office.square <= this.square &&
           !this.officeType
         ) {
-          return (
-            office.compatible_for === this.officeType &&
-            office.floor == this.floor
-          );
+          return office.floor === this.floor && office.square <= this.square;
         }
       });
-      // this.filteredOffices = "לא נמצא נכס המתאים...";
-      console.log(this.filteredOffices);
+      if (!this.filteredOffices.length) {
+        this.noResults = true;
+      } else {
+        this.noResults = false;
+      }
+    },
+    onModalClose() {
+      this.videoPath = null;
+    },
+    foo(office) {
+      // console.log("foo", office);
+      this.videoTitle = `${office.title_label} ${
+        office.square
+      } מ''ר, ${this.floorToString(office.floor)}`;
+      this.videoPath = office.video_url.replace(
+        "https://youtu.be/",
+        "https://youtube.com/embed/"
+      );
+      this.$root.$emit("bv::show::modal", "modal2");
+    },
+    floorToString(floor) {
+      if (floor == 0) {
+        return "קומת קרקע";
+      } else if (floor < 0) {
+        const rev = floor
+          .split("")
+          .reverse()
+          .join("");
+        return `קומה ${rev}`;
+      }
+      return `קומה ${floor}`;
     },
     async getOptions() {
       try {
@@ -163,7 +231,6 @@ export default {
           "https://naon-serv.co.il/test/octobercms/api/offices"
         );
         this.$store.dispatch("fillOffices", data);
-        // console.log(data);
       } catch (err) {
         console.log(err.message);
       }
