@@ -4,7 +4,7 @@
       <div class="col-5 px-1">
         <div class="video-block">
           <h6 class="text-green-light">
-            {{ office.title_label }} {{ office.square.toLocaleString() }} מ''ר,
+            {{ office.title_label }} {{ office.square }} מ''ר,
             <span class="text-nowrap">{{ floorToString(office.floor) }}</span>
           </h6>
           <div @click="$emit('openModal', office)" class="video-image">

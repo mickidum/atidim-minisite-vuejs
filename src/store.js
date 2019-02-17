@@ -25,6 +25,9 @@ export default new Vuex.Store({
 	actions: {
 		fillStore({ commit }, payload) {
 			commit("fillStore", payload);
+		},
+		fillOffices({ commit }, payload) {
+			commit("fillOffices", payload);
 		}
 	},
 	getters: {
