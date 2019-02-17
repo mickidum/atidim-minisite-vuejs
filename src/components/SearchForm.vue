@@ -13,7 +13,7 @@
             >
             </b-form-select>
           </div>
-          <div class="col-md-3 mb-2">
+          <div class="col-md-3 mb-3 p-2">
             <label class="sr-only" for="search-form-square">שטח במ''ר</label>
             <range-slider
               class="slider"
@@ -24,12 +24,14 @@
             >
             </range-slider>
 
-            <div class=" text-center">
-              <strong v-show="square">שטח: {{ square }} מ''ר</strong>
+            <div style="min-height: 40px;" class="text-center">
+              <strong
+                >שטח: <span v-show="square">{{ square }}</span> מ''ר</strong
+              >
             </div>
           </div>
           <div class="col-md-3 mb-2">
-            <label class="sr-only" for="search-form-floor">סוג נכס</label>
+            <label class="sr-only" for="search-form-floor">קומה</label>
             <b-form-select
               id="search-form-floor"
               v-model="floor"
@@ -39,7 +41,9 @@
             </b-form-select>
           </div>
           <div class="col-md-3 mb-2">
-            <b-button class="btn-block" variant="success">חיפוש</b-button>
+            <b-button @click="searchFilter" class="btn-block" variant="success"
+              >חיפוש</b-button
+            >
           </div>
         </div>
       </div>
@@ -71,13 +75,15 @@ export default {
         { value: "1", text: "1" },
         { value: "2", text: "2" },
         { value: "3", text: "3" }
-      ]
+      ],
+      filteredOffices: null
     };
   },
   computed: {
     allOffices() {
       return this.$store.getters.getOffices;
     },
+
     getFloors() {
       const tupple = new Set();
       let arr = [];
@@ -96,7 +102,61 @@ export default {
     this.getOptions();
   },
   methods: {
-    removeDuplicates() {},
+    searchFilter() {
+      this.filteredOffices = this.allOffices.filter(office => {
+        // SIMPLE
+        if (
+          office.compatible_for === this.officeType &&
+          !this.floor &&
+          !this.square
+        ) {
+          return office.compatible_for === this.officeType;
+        }
+        if (office.floor == this.floor && !this.officeType && !this.square) {
+          return office.floor == this.floor;
+        }
+        if (office.square <= this.square && !this.officeType && !this.floor) {
+          return office.square <= this.square;
+        }
+        // by officeType
+        if (
+          office.compatible_for === this.officeType &&
+          office.floor === this.floor &&
+          !this.square
+        ) {
+          return (
+            office.compatible_for === this.officeType &&
+            office.floor == this.floor
+          );
+        }
+
+        // sdsdsdsds
+        if (
+          office.compatible_for === this.officeType &&
+          office.square <= this.square &&
+          !office.floor
+        ) {
+          return (
+            office.compatible_for === this.officeType &&
+            office.square <= this.square
+          );
+        }
+
+        // by floor
+        if (
+          office.floor === this.floor &&
+          office.square <= this.square &&
+          !this.officeType
+        ) {
+          return (
+            office.compatible_for === this.officeType &&
+            office.floor == this.floor
+          );
+        }
+      });
+      // this.filteredOffices = "לא נמצא נכס המתאים...";
+      console.log(this.filteredOffices);
+    },
     async getOptions() {
       try {
         const { data } = await axios.get(
