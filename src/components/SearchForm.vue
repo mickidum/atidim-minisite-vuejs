@@ -24,7 +24,9 @@
             >
             </range-slider>
 
-            <div class=" text-center">שטח: {{ square }}</div>
+            <div class=" text-center">
+              <strong v-show="square">שטח: {{ square }} מ''ר</strong>
+            </div>
           </div>
           <div class="col-md-3 mb-2">
             <label class="sr-only" for="search-form-floor">סוג נכס</label>
