@@ -4,15 +4,25 @@
 			<div class="form-row">
 				<div class="col-12 mb-2">
 					<label class="sr-only" for="big-form-name">שם מלא</label>
-					<b-input class="" id="big-form-name" placeholder="שם מלא" />
+					<b-input required class="" id="big-form-name" placeholder="שם מלא" />
 				</div>
 				<div class="col-12 mb-2">
 					<label class="sr-only" for="big-form-mail">דואל</label>
-					<b-input class="" id="big-form-mail" placeholder="דואל" />
+					<b-input
+						required
+						class="ltr-rtl"
+						id="big-form-mail"
+						placeholder="דואל"
+					/>
 				</div>
 				<div class="col-12 mb-2">
 					<label class="sr-only" for="big-form-phone">טלפון</label>
-					<b-input class="" id="big-form-phone" placeholder="טלפון" />
+					<b-input
+						required
+						class="ltr-rtl"
+						id="big-form-phone"
+						placeholder="טלפון"
+					/>
 				</div>
 				<div class="col-12 mb-2">
 					<label class="sr-only" for="big-form-message">הודעה</label>

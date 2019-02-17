@@ -1,7 +1,7 @@
 <template>
   <div :class="['spinner-container', end]">
     <div class="inner">
-      <img src="@/assets/logo2.png" alt="logo">
+      <img src="@/assets/logo2.png" alt="logo" />
     </div>
   </div>
 </template>
@@ -15,12 +15,18 @@ export default {
 
 <style lang="scss" scoped>
 .spinner-container {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   overflow: hidden;
-  position: relative;
+  // position: relative;
   display: flex;
   width: 100%;
   height: 100vh;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
   align-items: center;
   justify-content: center;
   .inner {

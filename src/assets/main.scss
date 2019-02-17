@@ -12,6 +12,13 @@ body {
 	}
 }
 
+.ltr-rtl {
+	direction: ltr;
+	&::placeholder {
+		direction: rtl;
+	}
+}
+
 .range-slider {
 	display: inline-block;
 	padding: 0 10px;

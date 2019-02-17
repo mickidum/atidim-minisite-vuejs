@@ -17,7 +17,7 @@
 		<div class="short-form">
 			<div class="container">
 				<h2>צור קשר</h2>
-				<ShortForm />
+				<ShortForm :name="name" :email="email" :phone="phone" />
 			</div>
 		</div>
 		<div class="asakim">
@@ -88,6 +88,13 @@ export default {
 	components: {
 		ShortForm,
 		SearchForm
+	},
+	data() {
+		return {
+			name: null,
+			email: null,
+			phone: null
+		};
 	}
 };
 </script>
