@@ -9,7 +9,6 @@
               id="search-form-type"
               v-model="officeType"
               :options="officeTypeOptions"
-              class=""
             >
             </b-form-select>
           </div>

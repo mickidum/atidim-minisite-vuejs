@@ -3,14 +3,14 @@
 		<div class="home-banner text-center">
 			<img class="fit" src="@/assets/home-banner.jpg" alt="home" />
 		</div>
-		<div class="filter">
+		<div class="">
 			<div class="container header-containera">
 				<h1 class="text-green my-3 header-border">משרדים להשכרה</h1>
 			</div>
 			<div class="search-form">
 				<SearchForm />
 			</div>
-			<div class="text-center">
+			<div class="text-center filter">
 				<img class="fit" src="@/assets/home2.jpg" alt="home2" />
 			</div>
 		</div>
