@@ -3,17 +3,17 @@
     <b-form id="search-form">
       <div class="container">
         <div class="form-row">
-          <div class="col-md-3 mb-2">
+          <div class="col-md-3">
             <label class="sr-only" for="search-form-type">סוג נכס</label>
             <b-form-select
               id="search-form-type"
               v-model="officeType"
               :options="officeTypeOptions"
-              class="mb-3"
+              class=""
             >
             </b-form-select>
           </div>
-          <div class="col-md-3 mb-3 p-2">
+          <div class="col-md-3 p-2">
             <label class="sr-only" for="search-form-square">שטח במ''ר</label>
             <range-slider
               class="slider"
@@ -48,7 +48,7 @@
         </div>
       </div>
     </b-form>
-    <div class="search-results offices-list">
+    <div class="search-results offices-list my-3">
       <div class="container" style="max-width: 820px;">
         <div v-if="filteredOffices" class="row">
           <Office

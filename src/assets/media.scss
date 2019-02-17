@@ -35,6 +35,15 @@
 }
 
 @media (max-width: 769px) {
+	.search-results {
+		.fz-20 {
+			h6 {
+				font-weight: 500;
+				line-height: 1;
+				font-size: 18px;
+			}
+		}
+	}
 	.building-banner {
 		display: none;
 	}
