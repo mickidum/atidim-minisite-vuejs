@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<b-form>
+		<b-form id="footer-form">
 			<div class="container">
 				<div class="form-row">
 					<div class="col-md-3 mb-2">

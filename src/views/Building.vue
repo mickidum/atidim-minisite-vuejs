@@ -41,37 +41,16 @@
     <div class="offices-list">
       <div class="container">
         <div class="row">
-          <div
+          <Office
             :key="office.id"
             v-for="office in build.offices"
             :class="[
               'mb-3',
               build.offices.length > 1 ? 'col-md-6 fz-18' : 'col-md-12 fz-20'
             ]"
-          >
-            <div class="row">
-              <div class="col-5 px-1">
-                <div class="video-block">
-                  <h6 class="text-green-light">
-                    {{ office.title_label }} {{ office.square }} מ''ר,
-                    <span class="text-nowrap">{{
-                      floorToString(office.floor)
-                    }}</span>
-                  </h6>
-                  <div
-                    @click="foo(office)"
-                    v-b-modal.modal1
-                    class="video-image"
-                  >
-                    <img src="@/assets/b-test/video.jpg" alt="video" />
-                  </div>
-                </div>
-              </div>
-              <div class="col-7 px-1">
-                <img :src="office.featured_image.path" :alt="office.title" />
-              </div>
-            </div>
-          </div>
+            :office="office"
+            @openModal="foo(office)"
+          />
         </div>
       </div>
     </div>
@@ -103,8 +82,12 @@
 
 <script>
 import { mapGetters } from "vuex";
+import Office from "@/components/Office";
 export default {
   name: "building",
+  components: {
+    Office
+  },
 
   data() {
     return {
@@ -121,13 +104,8 @@ export default {
     },
     ...mapGetters({ site: "getAll", building: "building", loaded: "loaded" })
   },
-  // mounted() {
-  //   console.log(this.build);
-  // },
+
   methods: {
-    // onModalOpen() {
-    //   console.log("open", this);
-    // },
     onModalClose() {
       this.videoPath = null;
     },
@@ -140,6 +118,7 @@ export default {
         "https://youtu.be/",
         "https://youtube.com/embed/"
       );
+      this.$root.$emit("bv::show::modal", "modal1");
     },
     floorToString(floor) {
       if (floor == 0) {

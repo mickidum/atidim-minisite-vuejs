@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<b-form>
+		<b-form id="big-form">
 			<div class="form-row">
 				<div class="col-12 mb-2">
 					<label class="sr-only" for="big-form-name">שם מלא</label>

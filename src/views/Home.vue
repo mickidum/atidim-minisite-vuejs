@@ -7,6 +7,9 @@
 			<div class="container header-container">
 				<h1 class="text-green my-3 header-border">משרדים להשכרה</h1>
 			</div>
+			<div class="search-form">
+				<SearchForm />
+			</div>
 			<div class="text-center">
 				<img class="fit" src="@/assets/home2.jpg" alt="home2" />
 			</div>
@@ -78,11 +81,13 @@
 
 <script>
 import ShortForm from "@/components/ShortForm";
+import SearchForm from "@/components/SearchForm";
 
 export default {
 	name: "home",
 	components: {
-		ShortForm
+		ShortForm,
+		SearchForm
 	}
 };
 </script>
