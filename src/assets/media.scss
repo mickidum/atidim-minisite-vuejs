@@ -35,15 +35,6 @@
 }
 
 @media (max-width: 769px) {
-	.search-results {
-		.fz-20 {
-			h6 {
-				font-weight: 500;
-				line-height: 1;
-				font-size: 18px;
-			}
-		}
-	}
 	.building-banner {
 		display: none;
 	}
@@ -92,6 +83,18 @@
 }
 
 @media (max-width: 575.98px) {
+	.search-results {
+		.fz-20 {
+			h6 {
+				font-weight: 500;
+				line-height: 1;
+				font-size: 18px;
+			}
+		}
+	}
+	#search-form {
+		padding: 50px 0 40px;
+	}
 	img.fit {
 		min-height: 220px;
 		object-fit: cover;
