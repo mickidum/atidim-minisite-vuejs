@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <Preloader v-if="!loaded"/>
+    <Preloader v-if="!loaded" />
     <div v-if="loaded" class="full-app">
       <div class="main-menu">
-        <MainMenu im="logo.png"/>
+        <MainMenu im="logo.png" />
       </div>
       <transition name="fade" mode="out-in">
-        <router-view :key="$route.params.id"/>
+        <router-view :key="$route.params.id" />
       </transition>
       <div class="short-form bottom-form">
         <div class="container">
@@ -15,11 +15,11 @@
             <span class="hfm">/</span>
             <span>050-4455074</span>
           </h2>
-          <FooterForm/>
+          <FooterForm />
         </div>
       </div>
       <div class="main-menu footer">
-        <FooterMenu/>
+        <FooterMenu />
       </div>
     </div>
   </div>
@@ -47,10 +47,10 @@ export default {
     }
   },
   mounted() {
-    this.getFromApi();
+    this.getAllFromApi();
   },
   methods: {
-    async getFromApi() {
+    async getBuildings() {
       try {
         const { data } = await axios.get(
           "https://naon-serv.co.il/test/octobercms/api/buildings"
@@ -61,7 +61,20 @@ export default {
         console.log(error.message);
       }
     },
-    showPreloader() {}
+    async getPages() {
+      try {
+        const { data } = await axios.get(
+          "https://naon-serv.co.il/test/octobercms/api/pages"
+        );
+        // console.log(data);
+        this.$store.dispatch("fillPages", data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+    getAllFromApi() {
+      axios.all([this.getBuildings(), this.getPages()]);
+    }
   }
 };
 </script>

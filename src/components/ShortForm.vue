@@ -73,7 +73,7 @@ export default {
 			axios
 				.post(crmUrl, {
 					token: crmToken,
-					new_temp4: "Minisite short form 1",
+					new_temp4: "Minisite short form Homepage",
 					new_temp5: "משרדים, שטחים, חללי עבודה להשכרה קרית עתידים.",
 					new_temp1: this.name,
 					new_temp2: this.phone,

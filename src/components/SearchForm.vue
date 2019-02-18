@@ -206,7 +206,7 @@ export default {
       // console.log("foo", office);
       this.videoTitle = `${office.title_label} ${
         office.square
-      } מ''ר, ${this.floorToString(office.floor)}`;
+      } מ''ר, ${this.floorToString(office.floor)}, ${office.building.title}`;
       this.videoPath = office.video_url.replace(
         "https://youtu.be/",
         "https://youtube.com/embed/"

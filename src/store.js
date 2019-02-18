@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		site: [],
+		pages: [],
 		loaded: false,
 		offices: []
 	},
@@ -20,6 +21,9 @@ export default new Vuex.Store({
 		},
 		fillOffices(state, payload) {
 			state.offices = payload;
+		},
+		fillPages(state, payload) {
+			state.pages = payload;
 		}
 	},
 	actions: {
@@ -28,6 +32,9 @@ export default new Vuex.Store({
 		},
 		fillOffices({ commit }, payload) {
 			commit("fillOffices", payload);
+		},
+		fillPages({ commit }, payload) {
+			commit("fillPages", payload);
 		}
 	},
 	getters: {
@@ -43,6 +50,11 @@ export default new Vuex.Store({
 		building: state => id => {
 			return state.site.find(building => {
 				return building.building_number == id;
+			});
+		},
+		getPage: state => slug => {
+			return state.pages.find(page => {
+				return page.slug == slug;
 			});
 		}
 	}
