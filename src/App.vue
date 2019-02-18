@@ -53,7 +53,8 @@ export default {
     async getBuildings() {
       try {
         const { data } = await axios.get(
-          "https://naon-serv.co.il/test/octobercms/api/buildings"
+          // "https://naon-serv.co.il/test/octobercms/api/buildings"
+          "https://apimic.zur4win.com/api/buildings"
         );
         // console.log(data);
         this.$store.dispatch("fillStore", data);
@@ -64,7 +65,8 @@ export default {
     async getPages() {
       try {
         const { data } = await axios.get(
-          "https://naon-serv.co.il/test/octobercms/api/pages"
+          // "https://naon-serv.co.il/test/octobercms/api/pages"
+          "https://apimic.zur4win.com/api/pages"
         );
         // console.log(data);
         this.$store.dispatch("fillPages", data);

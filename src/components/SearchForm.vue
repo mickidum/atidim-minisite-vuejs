@@ -114,12 +114,6 @@ export default {
         { value: "משרד", text: "משרד" },
         { value: "מסחר", text: "מסחר" },
         { value: "מעטפת", text: "מעטפת" }
-      ],
-      floorOptions: [
-        { value: null, text: "קומה" },
-        { value: "1", text: "1" },
-        { value: "2", text: "2" },
-        { value: "3", text: "3" }
       ]
     };
   },
@@ -228,7 +222,8 @@ export default {
     async getOptions() {
       try {
         const { data } = await axios.get(
-          "https://naon-serv.co.il/test/octobercms/api/offices"
+          // "https://naon-serv.co.il/test/octobercms/api/offices"
+          "https://apimic.zur4win.com/api/offices"
         );
         this.$store.dispatch("fillOffices", data);
       } catch (err) {

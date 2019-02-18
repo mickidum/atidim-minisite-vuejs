@@ -1,7 +1,7 @@
 <template>
-	<div class="home">
+	<div v-if="page" class="home">
 		<div class="home-banner text-center">
-			<img :src="page.main_image.path" :alt="page.title" />
+			<img :src="page.main_image.path" :alt="page.main_image.title" />
 		</div>
 		<div class="">
 			<div class="container header-containera">
@@ -11,7 +11,11 @@
 				<SearchForm />
 			</div>
 			<div class="text-center filter">
-				<img class="fit" src="@/assets/home2.jpg" alt="home2" />
+				<img
+					class="fit"
+					:src="page.content_1_gallery[0].path"
+					:alt="page.content_1_gallery[0].title"
+				/>
 			</div>
 		</div>
 		<div class="short-form">
@@ -20,7 +24,7 @@
 				<ShortForm :name="name" :email="email" :phone="phone" />
 			</div>
 		</div>
-		<div class="asakim">
+		<div v-html="page.content" class="asakim">
 			<!-- <div class="container">
 				<h2 class="text-green header-border mb-4">
 					עסקים מבוקשים לפארק עתידים
