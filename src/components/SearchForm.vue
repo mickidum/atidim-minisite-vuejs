@@ -55,7 +55,7 @@
             v-for="office in filteredOffices"
             :class="['mb-3', 'col-md-12 fz-20']"
             :office="office"
-            :building="office.building.title"
+            :building="', ' + office.building.title"
             @openModal="foo(office)"
           />
         </div>

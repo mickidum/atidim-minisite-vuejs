@@ -6,7 +6,7 @@
           <h6 class="text-green-light">
             {{ office.title_label }} {{ office.square }} מ''ר,
             <span class="text-nowrap"
-              >{{ floorToString(office.floor) }} {{ "," + building }}</span
+              >{{ floorToString(office.floor) }} {{ building }}</span
             >
           </h6>
           <div @click="$emit('openModal', office)" class="video-image">
@@ -27,7 +27,10 @@ export default {
     office: Object,
     officeClass: String,
     openModal: Function,
-    building: String
+    building: {
+      default: "",
+      type: String
+    }
   },
   methods: {
     floorToString(floor) {
