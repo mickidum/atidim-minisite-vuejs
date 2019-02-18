@@ -5,7 +5,9 @@
         <div class="video-block">
           <h6 class="text-green-light">
             {{ office.title_label }} {{ office.square }} מ''ר,
-            <span class="text-nowrap">{{ floorToString(office.floor) }}</span>
+            <span class="text-nowrap"
+              >{{ floorToString(office.floor) }} {{ "," + building }}</span
+            >
           </h6>
           <div @click="$emit('openModal', office)" class="video-image">
             <img src="@/assets/b-test/video.jpg" alt="video" />
@@ -24,7 +26,8 @@ export default {
   props: {
     office: Object,
     officeClass: String,
-    openModal: Function
+    openModal: Function,
+    building: String
   },
   methods: {
     floorToString(floor) {
