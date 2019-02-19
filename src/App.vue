@@ -13,7 +13,7 @@
           <h2>
             <span>צרו קשר 8485*</span>
             <span class="hfm">/</span>
-            <span>050-4455074</span>
+            <a href="tel:050-4455074"><span>050-4455074</span></a>
           </h2>
           <FooterForm />
         </div>

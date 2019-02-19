@@ -2,6 +2,9 @@
 	<div>
 		<b-form @submit.prevent="formSubmit">
 			<div class="container">
+				<div v-if="error" class="error text-center py-1 bg-danger text-white">
+					{{ error }}
+				</div>
 				<div class="form-row">
 					<div class="col-md-3 mb-2">
 						<label class="sr-only" for="short-form-name">שם מלא</label>
@@ -61,7 +64,8 @@ export default {
 			loaded: false,
 			phone: null,
 			email: null,
-			name: null
+			name: null,
+			error: null
 		};
 	},
 	methods: {
@@ -85,9 +89,11 @@ export default {
 					this.phone = null;
 					this.email = null;
 					this.name = null;
+					this.error = null;
 				})
 				.catch(error => {
 					this.loaded = false;
+					this.error = error.message;
 					console.error(error.message);
 				});
 		}

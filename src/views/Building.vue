@@ -114,10 +114,11 @@ export default {
       this.videoTitle = `${office.title_label} ${
         office.square
       } מ''ר, ${this.floorToString(office.floor)}`;
-      this.videoPath = office.video_url.replace(
-        "https://youtu.be/",
-        "https://youtube.com/embed/"
-      );
+      this.videoPath =
+        office.video_url.replace(
+          "https://youtu.be/",
+          "https://youtube.com/embed/"
+        ) + "?autoplay=1";
       this.$root.$emit("bv::show::modal", "modal1");
     },
     floorToString(floor) {

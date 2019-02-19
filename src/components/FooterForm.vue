@@ -2,6 +2,9 @@
 	<div>
 		<b-form @submit.prevent="formSubmit" id="footer-form">
 			<div class="container">
+				<div v-if="error" class="error text-center py-1 bg-danger text-white">
+					{{ error }}
+				</div>
 				<div class="form-row">
 					<div class="col-md-3 mb-2">
 						<label class="sr-only" for="footer-form-name">שם מלא</label>
@@ -53,6 +56,7 @@ import Preloader from "@/components/Preloader";
 const crmUrl = "https://crmplugin.weboxcloud.com/atidim_Lead/leadapi.aspx";
 const crmToken = "20180424";
 export default {
+	name: "FooterForm",
 	components: {
 		Preloader
 	},
@@ -61,7 +65,8 @@ export default {
 			loaded: false,
 			phone: null,
 			email: null,
-			name: null
+			name: null,
+			error: null
 		};
 	},
 	methods: {
@@ -85,10 +90,12 @@ export default {
 					this.phone = null;
 					this.email = null;
 					this.name = null;
+					this.error = null;
 				})
 				.catch(error => {
 					this.loaded = false;
 					console.error(error.message);
+					this.error = error.message;
 				});
 		}
 	}

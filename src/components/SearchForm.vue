@@ -12,7 +12,7 @@
             >
             </b-form-select>
           </div>
-          <div class="col-md-3 p-2">
+          <div class="col-md-3 p-2 mt-4 mt-md-0">
             <label class="sr-only" for="search-form-square">שטח במ''ר</label>
             <range-slider
               class="slider"
@@ -186,6 +186,18 @@ export default {
         ) {
           return office.floor === this.floor && office.square <= this.square;
         }
+        // by all
+        if (
+          office.compatible_for === this.officeType &&
+          office.square <= this.square &&
+          office.floor === this.floor
+        ) {
+          return (
+            office.compatible_for === this.officeType &&
+            office.square <= this.square &&
+            office.floor === this.floor
+          );
+        }
       });
       if (!this.filteredOffices.length) {
         this.noResults = true;
@@ -201,10 +213,11 @@ export default {
       this.videoTitle = `${office.title_label} ${
         office.square
       } מ''ר, ${this.floorToString(office.floor)}, ${office.building.title}`;
-      this.videoPath = office.video_url.replace(
-        "https://youtu.be/",
-        "https://youtube.com/embed/"
-      );
+      this.videoPath =
+        office.video_url.replace(
+          "https://youtu.be/",
+          "https://youtube.com/embed/"
+        ) + "?autoplay=1";
       this.$root.$emit("bv::show::modal", "modal2");
     },
     floorToString(floor) {

@@ -16,6 +16,7 @@ body {
 	direction: ltr;
 	&::placeholder {
 		direction: rtl;
+		text-align: right;
 	}
 }
 
@@ -287,6 +288,11 @@ img {
 		text-align: right;
 		padding-right: 15px;
 		margin-bottom: 40px;
+		a,
+		span {
+			color: #fff;
+			display: inline-block;
+		}
 	}
 
 	input,

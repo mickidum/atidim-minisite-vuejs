@@ -37,6 +37,7 @@
 <script>
 import BigForm from "@/components/BigForm";
 export default {
+	name: "contact",
 	components: {
 		BigForm
 	},

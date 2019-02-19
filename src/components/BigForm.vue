@@ -1,6 +1,9 @@
 <template>
 	<div>
 		<b-form @submit.prevent="formSubmit" id="big-form">
+			<div v-if="error" class="error text-center py-1 bg-danger text-white">
+				{{ error }}
+			</div>
 			<div class="form-row">
 				<div class="col-12 mb-2">
 					<label class="sr-only" for="big-form-name">שם מלא</label>
@@ -8,7 +11,6 @@
 						v-model="name"
 						required
 						placeholder="שם מלא:"
-						required
 						id="big-form-name"
 					/>
 				</div>
@@ -75,6 +77,7 @@ import Preloader from "@/components/Preloader";
 const crmUrl = "https://crmplugin.weboxcloud.com/atidim_Lead/leadapi.aspx";
 const crmToken = "20180424";
 export default {
+	name: "bigForm",
 	components: {
 		Preloader
 	},
@@ -85,7 +88,8 @@ export default {
 			email: null,
 			message: null,
 			allowSpam: true,
-			name: null
+			name: null,
+			error: null
 		};
 	},
 	methods: {
@@ -94,15 +98,18 @@ export default {
 			if (!this.name && !this.email && !this.phone) {
 				return;
 			}
+			const obj = {
+				token: crmToken,
+				new_temp4: "Minisite big form Contact Page",
+				new_temp5: "משרדים, שטחים, חללי עבודה להשכרה קרית עתידים.",
+				new_temp1: this.name,
+				new_temp2: this.phone,
+				new_temp3: this.email,
+				new_temp8: this.message,
+				new_temp10: this.allowSpam
+			};
 			axios
-				.post(crmUrl, {
-					token: crmToken,
-					new_temp4: "Minisite big form Contact Page",
-					new_temp5: "משרדים, שטחים, חללי עבודה להשכרה קרית עתידים.",
-					new_temp1: this.name,
-					new_temp2: this.phone,
-					new_temp3: this.email
-				})
+				.post(crmUrl, obj)
 				.then(response => {
 					console.log(response);
 					this.loaded = false;
@@ -111,10 +118,12 @@ export default {
 					this.name = null;
 					this.message = null;
 					this.allowSpam = true;
+					this.error = null;
 				})
 				.catch(error => {
 					this.loaded = false;
 					console.error(error.message);
+					this.error = error.message;
 				});
 		}
 	}

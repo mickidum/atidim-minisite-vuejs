@@ -11,26 +11,34 @@ const router = new Router({
     {
       path: "/",
       name: "home",
-      component: () => import (/* webpackChunkName: "service" */
-      "./views/Home.vue")
-    }, {
+      component: () =>
+        import(/* webpackChunkName: "service" */
+        "./views/Home.vue")
+    },
+    {
       path: "/service",
       name: "service",
       // route level code-splitting this generates a separate chunk (about.[hash].js)
       // for this route which is lazy-loaded when the route is visited.
-      component: () => import (/* webpackChunkName: "service" */
-      "./views/Service.vue")
-    }, {
+      component: () =>
+        import(/* webpackChunkName: "service" */
+        "./views/Service.vue")
+    },
+    {
       path: "/contact",
       name: "contact",
-      component: () => import (/* webpackChunkName: "contact" */
-      "./views/Contact.vue")
-    }, {
+      component: () =>
+        import(/* webpackChunkName: "contact" */
+        "./views/Contact.vue")
+    },
+    {
       path: "/building/:id",
       name: "building",
-      component: () => import (/* webpackChunkName: "building" */
-      "./views/Building.vue")
-    }, {
+      component: () =>
+        import(/* webpackChunkName: "building" */
+        "./views/Building.vue")
+    },
+    {
       path: "*",
       name: "notfound",
       component: NotFound
@@ -39,8 +47,8 @@ const router = new Router({
 });
 
 router.afterEach((to, from) => {
-  const el = document.getElementById('app');
-  el.scrollIntoView({block: 'start', behavior: 'smooth'});
-})
+  const el = document.getElementById("app");
+  el.scrollIntoView({ block: "start", behavior: "smooth" });
+});
 
 export default router;
