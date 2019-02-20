@@ -143,6 +143,9 @@ export default {
     searchFilter() {
       this.filteredOffices = this.allOffices.filter(office => {
         // SIMPLE
+        if (!this.officeType && !this.floor && !this.square) {
+          return office;
+        }
         if (
           office.compatible_for === this.officeType &&
           !this.floor &&

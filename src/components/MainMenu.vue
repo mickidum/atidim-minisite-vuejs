@@ -19,7 +19,7 @@
         <b-dropdown-item to="/building/8">בניין 8</b-dropdown-item>
         <b-dropdown-item to="/building/10">בניין 10</b-dropdown-item>
       </b-dropdown>
-      <router-link class="nav-i" to="/service">שירותי הפרק</router-link>
+      <router-link class="nav-i" to="/service">שירותי הפארק</router-link>
       <router-link class="nav-i" to="/contact">צור קשר</router-link>
     </nav>
   </div>
