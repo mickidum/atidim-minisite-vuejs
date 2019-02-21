@@ -2,9 +2,16 @@
 	<div>
 		<b-form @submit.prevent="formSubmit" id="footer-form">
 			<div class="container">
-				<div v-if="error" class="error text-center py-1 bg-danger text-white">
-					{{ error }}
+				<div
+					v-if="responseMessage.message"
+					:class="[
+						'text-center py-1 text-white',
+						responseMessage.error ? 'error bg-danger' : 'success bg-success'
+					]"
+				>
+					{{ responseMessage.message }}
 				</div>
+
 				<div class="form-row">
 					<div class="col-md-3 mb-2">
 						<label class="sr-only" for="footer-form-name">שם מלא</label>
@@ -39,26 +46,35 @@
 						/>
 					</div>
 					<div class="col-md-3 mb-2">
-						<b-button type="submit" class="btn-block" variant="success"
-							>שליחה</b-button
+						<b-button
+							:disabled="loaded"
+							type="submit"
+							class="btn-block"
+							variant="success"
+						>
+							<b-spinner
+								v-show="loaded"
+								class="sp"
+								small
+								type="grow"
+							/>שליחה</b-button
 						>
 					</div>
 				</div>
 			</div>
 		</b-form>
-		<Preloader v-if="loaded" />
+		<!-- <Preloader v-if="loaded" /> -->
 	</div>
 </template>
 
 <script>
-import axios from "axios";
-import Preloader from "@/components/Preloader";
-const crmUrl = "https://crmplugin.weboxcloud.com/atidim_Lead/leadapi.aspx";
-const crmToken = "20180424";
+// import axios from "axios";
+// import Preloader from "@/components/Preloader";
+import jsonToFormData from "json-form-data";
 export default {
 	name: "FooterForm",
 	components: {
-		Preloader
+		// Preloader
 	},
 	data() {
 		return {
@@ -66,7 +82,10 @@ export default {
 			phone: null,
 			email: null,
 			name: null,
-			error: null
+			responseMessage: {
+				error: false,
+				message: ""
+			}
 		};
 	},
 	methods: {
@@ -75,29 +94,55 @@ export default {
 			if (!this.name && !this.email && !this.phone) {
 				return;
 			}
-			axios
-				.post(crmUrl, {
-					token: crmToken,
-					new_temp4: "Minisite short form Footer",
-					new_temp5: "משרדים, שטחים, חללי עבודה להשכרה קרית עתידים.",
-					new_temp1: this.name,
-					new_temp2: this.phone,
-					new_temp3: this.email
-				})
+			const obj = {
+				token: this.$store.state.crmToken,
+				new_temp1: this.name,
+				new_temp2: this.phone,
+				new_temp3: this.email,
+				new_temp4: "minisite",
+				new_temp5: "משרדים, שטחים, חללי עבודה להשכרה קרית עתידים - מיניסייט",
+				new_temp7: "https://atidim.co.il/atidim-newsletters/office-for-rent",
+				new_temp9: "טופס יצירת קשר נמצא בכל עמוד"
+			};
+			this.$http
+				.post(this.$store.state.crmUrl, jsonToFormData(obj))
 				.then(response => {
-					console.log(response);
 					this.loaded = false;
+					console.log(response);
+					if (response.data === "Error!!!") {
+						this.responseMessage = {
+							error: true,
+							message: "יש טעויות בטופס!"
+						};
+						return;
+					}
+
 					this.phone = null;
 					this.email = null;
 					this.name = null;
-					this.error = null;
+					this.responseMessage = {
+						error: false,
+						message: "נשלח בהצלחה, תודה!"
+					};
+					setTimeout(() => {
+						this.responseMessage.message = null;
+					}, 5000);
 				})
 				.catch(error => {
 					this.loaded = false;
 					console.error(error.message);
-					this.error = error.message;
+					this.responseMessage = {
+						error: true,
+						message: error.message
+					};
 				});
 		}
 	}
 };
 </script>
+
+<style scoped>
+.sp {
+	top: 12px !important;
+}
+</style>

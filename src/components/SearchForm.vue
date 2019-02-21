@@ -92,7 +92,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import RangeSlider from "vue-range-slider";
 import Office from "@/components/Office";
 export default {
@@ -135,9 +134,6 @@ export default {
       });
       return arr;
     }
-  },
-  mounted() {
-    this.getOptions();
   },
   methods: {
     searchFilter() {
@@ -212,7 +208,6 @@ export default {
       this.videoPath = null;
     },
     foo(office) {
-      // console.log("foo", office);
       this.videoTitle = `${office.title_label} ${
         office.square
       } מ''ר, ${this.floorToString(office.floor)}, ${office.building.title}`;
@@ -234,17 +229,6 @@ export default {
         return `קומה ${rev}`;
       }
       return `קומה ${floor}`;
-    },
-    async getOptions() {
-      try {
-        const { data } = await axios.get(
-          // "https://naon-serv.co.il/test/octobercms/api/offices"
-          "https://apimic.zur4win.com/api/offices"
-        );
-        this.$store.dispatch("fillOffices", data);
-      } catch (err) {
-        console.log(err.message);
-      }
     }
   }
 };

@@ -12,6 +12,23 @@ body {
 	}
 }
 
+.ch-b-1 {
+	// .custom-control-label::before {
+	// 	background-color: #000 !important;
+	// 	border-color: #000 !important;
+	// }
+	.custom-control-input:checked ~ .custom-control-label::before {
+		background-color: #000;
+		border-color: #000;
+	}
+}
+
+.sp {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+}
+
 .ltr-rtl {
 	direction: ltr;
 	&::placeholder {
@@ -198,7 +215,7 @@ img {
 				line-height: 2;
 				color: #006634;
 
-				&.dropdown-item.active {
+				&.dropdown-item.router-link-exact-active {
 					color: #fff;
 					background-color: #44ac33;
 				}
@@ -241,6 +258,7 @@ img {
 	input,
 	textarea {
 		background-color: #000;
+		color: #fff;
 	}
 
 	button {
@@ -364,7 +382,7 @@ img {
 
 	.ch-b-1 {
 		position: absolute;
-		right: -25px;
+		right: -6px;
 		top: 0;
 	}
 

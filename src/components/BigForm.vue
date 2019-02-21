@@ -1,9 +1,16 @@
 <template>
 	<div>
 		<b-form @submit.prevent="formSubmit" id="big-form">
-			<div v-if="error" class="error text-center py-1 bg-danger text-white">
-				{{ error }}
+			<div
+				v-if="responseMessage.message"
+				:class="[
+					'text-center py-1 text-white',
+					responseMessage.error ? 'error bg-danger' : 'success bg-success'
+				]"
+			>
+				{{ responseMessage.message }}
 			</div>
+
 			<div class="form-row">
 				<div class="col-12 mb-2">
 					<label class="sr-only" for="big-form-name">שם מלא</label>
@@ -47,17 +54,21 @@
 					/>
 				</div>
 				<div class="col-12 mb-2">
-					<b-button type="submit" class="btn-block" variant="success"
-						>שליחה</b-button
+					<b-button
+						:disabled="loaded"
+						type="submit"
+						class="btn-block"
+						variant="success"
+					>
+						<b-spinner v-show="loaded" class="sp" type="grow" />שליחה</b-button
 					>
 				</div>
 				<div class="col-12">
 					<div class="ch-b">
-						<b-form-checkbox
-							button-variant="dark"
-							checked="allowSpam"
+						<b-checkbox
+							button-variant="secondary"
+							:checked="allowSpam"
 							class="ch-b-1"
-							v-model="allowSpam"
 						/>
 						הרינו להודיעך כי צורפת לרשימת תפוצה של נמענים לעדכונים הכוללים, בין
 						היתר, הצעות שיווקיות ודברי פרסומת ביחס לפארק עתידים. אם אינך מעוניין
@@ -67,19 +78,18 @@
 				</div>
 			</div>
 		</b-form>
-		<Preloader v-if="loaded" />
+		<!-- <Preloader v-if="loaded" /> -->
 	</div>
 </template>
 
 <script>
-import axios from "axios";
-import Preloader from "@/components/Preloader";
-const crmUrl = "https://crmplugin.weboxcloud.com/atidim_Lead/leadapi.aspx";
-const crmToken = "20180424";
+// import axios from "axios";
+// import Preloader from "@/components/Preloader";
+import jsonToFormData from "json-form-data";
 export default {
 	name: "bigForm",
 	components: {
-		Preloader
+		// Preloader
 	},
 	data() {
 		return {
@@ -89,7 +99,10 @@ export default {
 			message: null,
 			allowSpam: true,
 			name: null,
-			error: null
+			responseMessage: {
+				error: false,
+				message: null
+			}
 		};
 	},
 	methods: {
@@ -98,32 +111,54 @@ export default {
 			if (!this.name && !this.email && !this.phone) {
 				return;
 			}
+
 			const obj = {
-				token: crmToken,
-				new_temp4: "Minisite big form Contact Page",
-				new_temp5: "משרדים, שטחים, חללי עבודה להשכרה קרית עתידים.",
+				token: this.$store.state.crmToken,
 				new_temp1: this.name,
 				new_temp2: this.phone,
 				new_temp3: this.email,
+				new_temp4: "minisite",
+				new_temp5: "משרדים, שטחים, חללי עבודה להשכרה קרית עתידים - מיניסייט",
+				new_temp7: "https://atidim.co.il/atidim-newsletters/office-for-rent",
 				new_temp8: this.message,
+				new_temp9: "טופס יצירת קשר נמצא בעמוד הבית",
 				new_temp10: this.allowSpam
 			};
-			axios
-				.post(crmUrl, obj)
+
+			this.$http
+				.post(this.$store.state.crmUrl, jsonToFormData(obj))
 				.then(response => {
+					this.loaded = false;
 					console.log(response);
+					if (response.data === "Error!!!") {
+						this.responseMessage = {
+							error: true,
+							message: "יש טעויות בטופס!"
+						};
+						return;
+					}
+
 					this.loaded = false;
 					this.phone = null;
 					this.email = null;
 					this.name = null;
 					this.message = null;
 					this.allowSpam = true;
-					this.error = null;
+					this.responseMessage = {
+						error: false,
+						message: "נשלח בהצלחה, תודה!"
+					};
+					setTimeout(() => {
+						this.responseMessage.message = null;
+					}, 5000);
 				})
 				.catch(error => {
 					this.loaded = false;
 					console.error(error.message);
-					this.error = error.message;
+					this.responseMessage = {
+						error: true,
+						message: error.message
+					};
 				});
 		}
 	}

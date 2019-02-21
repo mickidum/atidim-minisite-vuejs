@@ -30,7 +30,6 @@ import MainMenu from "@/components/MainMenu";
 import FooterMenu from "@/components/FooterMenu";
 import FooterForm from "@/components/FooterForm";
 import Preloader from "@/components/Preloader";
-import axios from "axios";
 export default {
   components: {
     MainMenu,
@@ -52,11 +51,9 @@ export default {
   methods: {
     async getBuildings() {
       try {
-        const { data } = await axios.get(
-          // "https://naon-serv.co.il/test/octobercms/api/buildings"
+        const { data } = await this.$http.get(
           "https://apimic.zur4win.com/api/buildings"
         );
-        // console.log(data);
         this.$store.dispatch("fillStore", data);
       } catch (error) {
         console.log(error.message);
@@ -64,18 +61,26 @@ export default {
     },
     async getPages() {
       try {
-        const { data } = await axios.get(
-          // "https://naon-serv.co.il/test/octobercms/api/pages"
+        const { data } = await this.$http.get(
           "https://apimic.zur4win.com/api/pages"
         );
-        // console.log(data);
         this.$store.dispatch("fillPages", data);
       } catch (error) {
         console.log(error.message);
       }
     },
+    async getOffices() {
+      try {
+        const { data } = await this.$http.get(
+          "https://apimic.zur4win.com/api/offices"
+        );
+        this.$store.dispatch("fillOffices", data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    },
     getAllFromApi() {
-      axios.all([this.getBuildings(), this.getPages()]);
+      this.$http.all([this.getBuildings(), this.getPages(), this.getOffices()]);
     }
   }
 };
