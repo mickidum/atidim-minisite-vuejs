@@ -51,7 +51,6 @@
 			.nav-i:first-child {
 				max-width: 200px;
 			}
-
 			.dropdown-menu {
 				a {
 					font-size: 18px;
@@ -139,7 +138,6 @@
 					// box-shadow: 0 0 5px silver;
 				}
 			}
-
 			.dropdown-menu {
 				a {
 					font-size: 20px;
@@ -188,7 +186,6 @@
 			font-size: 18px !important;
 		}
 		nav {
-			// flex-direction: column;
 			.nav-i {
 				display: inline-block;
 				vertical-align: middle;
@@ -196,7 +193,6 @@
 					max-width: 250px;
 					text-align: center;
 					margin-bottom: 5px;
-					// margin-top: 20px;
 					order: 2;
 				}
 				&:not(:first-child) {

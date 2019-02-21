@@ -110,7 +110,6 @@ export default {
       this.videoPath = null;
     },
     foo(office) {
-      // console.log("foo", office);
       this.videoTitle = `${office.title_label} ${
         office.square
       } מ''ר, ${this.floorToString(office.floor)}`;

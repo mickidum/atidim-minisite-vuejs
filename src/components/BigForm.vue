@@ -78,19 +78,13 @@
 				</div>
 			</div>
 		</b-form>
-		<!-- <Preloader v-if="loaded" /> -->
 	</div>
 </template>
 
 <script>
-// import axios from "axios";
-// import Preloader from "@/components/Preloader";
 import jsonToFormData from "json-form-data";
 export default {
 	name: "bigForm",
-	components: {
-		// Preloader
-	},
 	data() {
 		return {
 			loaded: false,
@@ -129,7 +123,6 @@ export default {
 				.post(this.$store.state.crmUrl, jsonToFormData(obj))
 				.then(response => {
 					this.loaded = false;
-					console.log(response);
 					if (response.data === "Error!!!") {
 						this.responseMessage = {
 							error: true,

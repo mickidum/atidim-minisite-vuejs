@@ -99,7 +99,6 @@ export default {
 				.post(this.$store.state.crmUrl, jsonToFormData(obj))
 				.then(response => {
 					this.loaded = false;
-					console.log(response);
 					if (response.data === "Error!!!") {
 						this.responseMessage = {
 							error: true,

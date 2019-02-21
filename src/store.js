@@ -1,10 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { crmUrl, crmToken } from "@/config";
 
 Vue.use(Vuex);
-
-const crmUrl = "https://crmplugin.weboxcloud.com/atidim_Lead/leadapi.aspx";
-const crmToken = "20180424";
 
 export default new Vuex.Store({
 	state: {
