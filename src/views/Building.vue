@@ -43,10 +43,10 @@
         <div class="row">
           <Office
             :key="office.id"
-            v-for="office in build.offices"
+            v-for="office in offices"
             :class="[
               'mb-3',
-              build.offices.length > 1 ? 'col-md-6 fz-18' : 'col-md-12 fz-20'
+              offices.length > 1 ? 'col-md-6 fz-18' : 'col-md-12 fz-20'
             ]"
             :office="office"
             @openModal="foo(office)"
@@ -98,6 +98,11 @@ export default {
   computed: {
     build() {
       return this.building(this.$route.params.id);
+    },
+    offices() {
+      return this.building(this.$route.params.id).offices.sort((a, b) => {
+        return a.square - b.square;
+      });
     },
     buildingNumber() {
       return this.$route.params.id;

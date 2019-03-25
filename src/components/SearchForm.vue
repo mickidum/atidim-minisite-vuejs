@@ -16,21 +16,21 @@
             <label class="sr-only" for="search-form-square">שטח במ''ר</label>
             <range-slider
               class="slider"
-              min="0"
+              min="50"
               max="2500"
-              step="10"
+              step="50"
               v-model="square"
             >
             </range-slider>
 
             <div style="min-height: 40px;" class="text-center">
               <strong
-                >שטח: <span v-show="square">{{ square }}</span> מ''ר</strong
+                >שטח: מ- <span v-show="square">{{ square }}</span> מ''ר</strong
               >
             </div>
           </div>
           <div class="col-md-3 mb-2">
-            <label class="sr-only" for="search-form-floor">קומה</label>
+            <label class="sr-only" for="search-form-floor">כל קומה</label>
             <b-form-select
               id="search-form-floor"
               v-model="floor"
@@ -105,11 +105,11 @@ export default {
       videoTitle: "demo",
       officeType: null,
       floor: null,
-      square: 0,
+      square: 500,
       noResults: false,
       filteredOffices: [],
       officeTypeOptions: [
-        { value: null, text: "סוג נכס" },
+        { value: null, text: "כל סוג הנכס" },
         { value: "משרד", text: "משרד" },
         { value: "מסחר", text: "מסחר" },
         { value: "מעטפת", text: "מעטפת" }
@@ -124,7 +124,7 @@ export default {
     getFloors() {
       const tupple = new Set();
       let arr = [];
-      arr.push({ value: null, text: "קומה" });
+      arr.push({ value: null, text: "כל קומה" });
       this.allOffices.forEach(o => {
         tupple.add(o.floor);
       });
@@ -135,6 +135,9 @@ export default {
       return arr;
     }
   },
+  // created() {
+  //   console.log(this.allOffices);
+  // },
   methods: {
     searchFilter() {
       this.filteredOffices = this.allOffices.filter(office => {
@@ -152,8 +155,12 @@ export default {
         if (office.floor == this.floor && !this.officeType && !this.square) {
           return office.floor == this.floor;
         }
-        if (office.square <= this.square && !this.officeType && !this.floor) {
-          return office.square <= this.square;
+        if (
+          office.square >= this.square * 0.8 &&
+          !this.officeType &&
+          !this.floor
+        ) {
+          return office.square >= this.square * 0.8;
         }
         // by officeType
         if (
@@ -169,31 +176,33 @@ export default {
 
         if (
           office.compatible_for === this.officeType &&
-          office.square <= this.square &&
+          office.square >= this.square * 0.8 &&
           !this.floor
         ) {
           return (
             office.compatible_for === this.officeType &&
-            office.square <= this.square
+            office.square >= this.square * 0.8
           );
         }
         // by floor
         if (
           office.floor === this.floor &&
-          office.square <= this.square &&
+          office.square >= this.square * 0.8 &&
           !this.officeType
         ) {
-          return office.floor === this.floor && office.square <= this.square;
+          return (
+            office.floor === this.floor && office.square >= this.square * 0.8
+          );
         }
         // by all
         if (
           office.compatible_for === this.officeType &&
-          office.square <= this.square &&
+          office.square >= this.square * 0.8 &&
           office.floor === this.floor
         ) {
           return (
             office.compatible_for === this.officeType &&
-            office.square <= this.square &&
+            office.square >= this.square * 0.8 &&
             office.floor === this.floor
           );
         }
@@ -208,6 +217,7 @@ export default {
       this.videoPath = null;
     },
     foo(office) {
+      console.log(office);
       this.videoTitle = `${office.title_label} ${
         office.square
       } מ''ר, ${this.floorToString(office.floor)}, ${office.building.title}`;

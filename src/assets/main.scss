@@ -337,6 +337,10 @@ img {
 		&::after {
 			background-color: #000;
 		}
+
+		&.dropdown-item.router-link-active.router-link-exact-active:not(.logo)::after {
+			content: none;
+		}
 	}
 }
 

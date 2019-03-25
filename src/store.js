@@ -45,7 +45,9 @@ export default new Vuex.Store({
 			return state.site;
 		},
 		getOffices: state => {
-			return state.offices;
+			return state.offices.sort((a, b) => {
+				return a.square - b.square;
+			});
 		},
 		loaded: state => {
 			return state.loaded;

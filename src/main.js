@@ -11,6 +11,8 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+// import "./assets/access/access";
+
 Vue.prototype.$http = Axios;
 
 Vue.use(BootstrapVue);
